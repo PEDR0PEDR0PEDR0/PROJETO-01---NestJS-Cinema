@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>CineMaster - Gestão de Cinema</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="sidebar">
+    <h2>🎬 CineMaster</h2>
+    <ul>
+      <li><a href="#" onclick="navegar('page-home')">🛒 Frente de Caixa</a></li>
+      <li><a href="#" onclick="navegar('page-sessoes')">📅 Sessões</a></li>
+      <li><a href="#" onclick="navegar('page-filmes')">🎞️ Filmes</a></li>
+      <li><a href="#" onclick="navegar('page-config')">⚙️ Configurações</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    
+    <section id="page-home" class="page active">
+      <div class="header-page">
+        <h1>Ponto de Venda</h1>
+        <p>Realize vendas rápidas de ingressos e combos.</p>
+      </div>
+
+      <div class="pdv-container">
+        <form id="formVendaUnificada">
+          <label>Sessão Disponível</label>
+          <select id="sessaoSelect" required></select>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Ingresso</label>
+              <select id="tipoIngresso">
+                <option value="inteira">Inteira (R$ 20,00)</option>
+                <option value="meia">Meia (R$ 10,00)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Combo Lanche</label>
+              <select id="lancheCombo">
+                <option value="0" data-preco="0">Nenhum</option>
+                <option value="1" data-preco="35">Pipoca + Refri (R$ 35,00)</option>
+                <option value="2" data-preco="40">Nachos + Refri (R$ 40,00)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="total-box">
+            <span>Total da Venda</span>
+            <strong id="valorTotal">R$ 20,00</strong>
+          </div>
+
+          <button type="submit" class="btn-primary">FINALIZAR VENDA</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="page-sessoes" class="page">
+      <h1>Gerenciar Sessões</h1>
+      <form id="formSessao" class="form-inline">
+        <select id="filmeSelect" required></select>
+        <select id="salaSelect" required></select>
+        <input type="datetime-local" id="dataSessao" required>
+        <button type="submit">Criar Sessão</button>
+      </form>
+      <div id="listaSessoes" class="grid-list"></div>
+    </section>
+
+    <section id="page-filmes" class="page">
+      <h1>Filmes em Cartaz</h1>
+      <form id="formFilme" class="form-inline">
+        <input id="titulo" placeholder="Título do Filme" required>
+        <select id="generoSelect" required></select>
+        <button type="submit">Cadastrar Filme</button>
+      </form>
+      <div id="listaFilmes" class="grid-list"></div>
+    </section>
+
+    <section id="page-config" class="page">
+      <h1>Configurações</h1>
+      <div class="config-grid">
+        <div class="config-card">
+          <h3>Gêneros</h3>
+          <form id="formGenero">
+            <input id="nomeGenero" placeholder="Nome" required>
+            <button>Add</button>
+          </form>
+          <div id="listaGeneros" class="mini-list"></div>
+        </div>
+        <div class="config-card">
+          <h3>Salas</h3>
+          <form id="formSala">
+            <input id="numeroSala" placeholder="Identificação" required>
+            <input id="capacidadeSala" type="number" placeholder="Capacidade" required>
+            <button>Add</button>
+          </form>
+          <div id="listaSalas" class="mini-list"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
